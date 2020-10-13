@@ -1,9 +1,11 @@
 import { DokzProvider, GithubLink, ColorModeSwitch } from 'dokz'
 import React, { Fragment } from 'react'
 import Head from 'next/head'
+import { Image } from "@chakra-ui/core";
 
 export default function App(props) {
     const { Component, pageProps } = props
+    console.log(Component)
     return (
         <Fragment>
             <Head>
@@ -14,19 +16,22 @@ export default function App(props) {
                 />
             </Head>
             <DokzProvider
+                headerLogo={[
+                    <Image src="/SodaFavico64.svg" key="0"/>
+                ]}
                 headerItems={[
                     <GithubLink
-                        key='0'
+                        key='1'
                         url='https://github.com/remorses/dokz'
                     />,
-                    <ColorModeSwitch key='1' />,
+                    <ColorModeSwitch key='2' />,
                 ]}
                 sidebarOrdering={{
-                    'index.mdx': true,
+                    'index.mdx': 1,
                     Documents_Group: {
                         'another.mdx': true,
                     },
-                }}
+                } }
             >
                 <Component {...pageProps} />
             </DokzProvider>
